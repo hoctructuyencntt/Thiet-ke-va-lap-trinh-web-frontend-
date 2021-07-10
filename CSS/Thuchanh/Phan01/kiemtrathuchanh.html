@@ -1,0 +1,124 @@
+
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Thực hành CSS (Phần 1)</title>
+		
+		<style>
+			
+			#sourceCode1, iframe, #sourceCode2 {			
+    			height: 300px;
+    				  			
+			}
+			#sourceCode1, #sourceCode2,iframe, #btn1, #btn2,#btn3 {						
+    			width: 100%;	  			
+			}
+			#sourceCode2, #btn3{
+				display:none;
+			}
+			
+		</style>
+
+			
+	</head>
+    <body>
+<h4>Thực hiện các nhiệm vụ sau:</h4>
+<ul>
+<li>Dùng thẻ &ltstyle&gt</li>
+<li>Chuyển màu nền trang sang màu xanh lá (green).</li>
+<li>Tiêu đề chữ màu đỏ (red), phông chữ Arial và căn giữa.</li>
+<li>Văn bản màu chữ vàng (yellow), kích cỡ chữ 20px, phông chữ Times New Roman.</li>
+<li>Khi hoàn thành nhấn nút <b>Chạy thử</b> để kiểm tra hay nhấn nút <b>Xem đáp án</b> để nhận câu trả lời chính xác.
+</ul>
+<form>
+<textarea name="sourceCode" id="sourceCode1">
+<!DOCTYPE html>
+<html>
+       <head>
+            <style>
+
+            </style>
+       </head>
+       <body>
+           <h1>Bài tập CSS</h1>
+            <p>Đoạn văn bản thứ nhất.</p>
+            <p>Đoạn văn bản thứ hai.</p>
+       </body>
+</html>
+  </textarea>
+
+<textarea name="sourceCode" id="sourceCode2">
+<html>
+       <head>
+           <style>
+	body{background-color:green;}
+	h1{color:red;text-align:center; font-family:Arial;}
+                   p{color:yellow;font-size:20px; font-family:Times New Roman;}
+            </style>
+       </head>
+       <body>
+           <h1>Bài tập CSS</h1>
+            <p>Đoạn văn bản thứ nhất.</p>
+            <p>Đoạn văn bản thứ hai.</p>
+       </body>
+</html>
+  </textarea>
+ <input id="btn1" onclick="runCode1();" type="button" value="Chạy thử">
+<input id="btn2" onclick="runCode2();" type="button" value="Xem đáp án">
+<input id="btn3" onclick="runCode3();" type="button" value="Làm lại bài tập">
+</form>
+
+<iframe name="targetCode" id="targetCode"></iframe>
+ 
+        <script type="text/javascript">
+	 const code1 = document.getElementById('sourceCode1');
+	 const code2 = document.getElementById('sourceCode2');
+	 const btn1 = document.getElementById('btn1');
+	 const btn2 = document.getElementById('btn2');
+            function runCode1()
+            {
+                 btn2.style.display = "block";
+	
+	var content = document.getElementById('sourceCode1').value;
+                var iframe = document.getElementById('targetCode');
+                iframe = (iframe.contentWindow) ? iframe.contentWindow : (iframe.contentDocument.document) ? iframe.contentDocument.document : iframe.contentDocument;
+                iframe.document.open();
+                iframe.document.write(content);
+                iframe.document.close();
+                return false;
+            }
+          function runCode2()
+            {         
+                code1.style.display = "none";
+                code2.style.display = "block";
+                 btn1.style.display = "none";
+                 btn2.style.display = "none";
+	btn3.style.display = "block";	
+	var content = document.getElementById('sourceCode2').value;
+                var iframe = document.getElementById('targetCode');
+                iframe = (iframe.contentWindow) ? iframe.contentWindow : (iframe.contentDocument.document) ? iframe.contentDocument.document : iframe.contentDocument;
+                iframe.document.open();
+                iframe.document.write(content);
+                iframe.document.close();
+                return false;
+            }
+      function runCode3()
+            {
+                 btn1.style.display = "block";
+                 btn2.style.display = "block";
+	btn3.style.display = "none";
+                code1.style.display = "block";
+                code2.style.display = "none";
+               var iframe = document.getElementById('targetCode');
+                iframe = (iframe.contentWindow) ? iframe.contentWindow : (iframe.contentDocument.document) ? iframe.contentDocument.document : iframe.contentDocument;
+                iframe.document.open();
+                iframe.document.write("");
+                iframe.document.close();
+                return false;
+            }
+           // runCode1();
+        </script>
+    </body>
+</html>
